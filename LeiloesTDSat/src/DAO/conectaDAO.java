@@ -20,7 +20,7 @@ public class conectaDAO {
         this.conn = conectar();
     }
 
-    //Faz a conexão com o banco de dados
+    //Faz a conexão com o banco de dados uc11
     public Connection conectar() {
         try {
             Connection conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/uc11", "root", "admin");

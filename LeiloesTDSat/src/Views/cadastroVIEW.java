@@ -199,6 +199,7 @@ public class cadastroVIEW extends javax.swing.JFrame {
 
         boolean empty = true;
 
+        //verifica se os campos de nome e valor estão em branco
         if (cadastroNome.getText().trim().isEmpty() || cadastroValor.getText().trim().isEmpty()) {
             JOptionPane.showMessageDialog(rootPane, "Preencha o campo nome e valor.");
         } else {
@@ -223,8 +224,10 @@ public class cadastroVIEW extends javax.swing.JFrame {
 
         ProdutosDAO produtodao = new ProdutosDAO();
 
+        //resposta vai receber um valor retornado de cadastrarProduto
         resposta = produtodao.cadastrarProduto(produto);
 
+        //faz uma ação de acordo com o recebido de cadastrarProduto
         switch (resposta) {
             case 1 -> {
                 JOptionPane.showMessageDialog(null, "Dados incluidos com sucesso.");

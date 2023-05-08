@@ -9,8 +9,10 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
+//ATENÇÃO!! extende o conectaDAO
 public class ProdutosDAO extends conectaDAO {
 
+    //vai inserir itens na tabela produtos, deve receber um objeto do tipo produto
     public int cadastrarProduto(ProdutosDTO produto) {
 
         int status;
@@ -27,6 +29,7 @@ public class ProdutosDAO extends conectaDAO {
         }
     }
 
+    //seleciona e retorna a lista de produtos
     public List<ProdutosDTO> listarProdutos() {
 
         try {
