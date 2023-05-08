@@ -30,7 +30,7 @@ public class ProdutosDAO extends conectaDAO {
     public List<ProdutosDTO> listarProdutos() {
 
         try {
-            st = conn.prepareStatement("SELECT id, nome, genero, streaming FROM filmes");
+            st = conn.prepareStatement("SELECT id, nome, valor, status FROM produtos");
             rs = st.executeQuery();
             List<ProdutosDTO> lista = new ArrayList<>();
             while (rs.next()) {
