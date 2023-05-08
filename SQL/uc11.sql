@@ -21,6 +21,10 @@ SET time_zone = "+00:00";
 -- Banco de dados: `uc11`
 --
 
+CREATE DATABASE uc11;
+
+USE uc11;
+
 -- --------------------------------------------------------
 
 --
@@ -60,6 +64,34 @@ ALTER TABLE `produtos`
 
 --
 -- AUTO_INCREMENT de tabela `produtos`
+--
+ALTER TABLE `produtos`
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+COMMIT;
+
+--
+-- Estrutura da tabela `vendas`
+--
+
+CREATE TABLE `vendas` (
+  `id` bigint(20) UNSIGNED NOT NULL,
+  `nome` text DEFAULT NULL,
+  `valor` int(11) DEFAULT NULL,
+  `status` text DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Índices para tabela `produtos`
+--
+ALTER TABLE `vendas`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- AUTO_INCREMENT de tabelas despejadas
+--
+
+--
+-- AUTO_INCREMENT de tabela `vendas`
 --
 ALTER TABLE `produtos`
   MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
