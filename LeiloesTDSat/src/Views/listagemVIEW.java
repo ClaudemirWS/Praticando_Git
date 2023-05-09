@@ -3,6 +3,7 @@ package Views;
 import Main.ProdutosDTO;
 import DAO.ProdutosDAO;
 import java.util.List;
+import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 
 /**
@@ -134,11 +135,17 @@ public class listagemVIEW extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnVenderActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnVenderActionPerformed
-        String id = id_produto_venda.getText();
 
         ProdutosDAO produtosdao = new ProdutosDAO();
 
-        //produtosdao.venderProduto(Integer.parseInt(id));
+        if (getProdutoSelecionado() != null) {
+            int confirma = JOptionPane.showConfirmDialog(null, "Tem certeza?");
+            if (confirma == 0) {
+                JOptionPane.showMessageDialog(null, "Produto vendido com sucesso!.");
+                produtosdao.venderProduto(getProdutoSelecionado());
+            }
+        }
+
         listarProdutos();
     }//GEN-LAST:event_btnVenderActionPerformed
 
@@ -216,5 +223,20 @@ public class listagemVIEW extends javax.swing.JFrame {
         } catch (Exception e) {
         }
 
+    }
+
+    private Integer getProdutoSelecionado() {
+
+        int linha = listaProdutos.getSelectedRow();
+
+        String idProduto = String.valueOf(listaProdutos.getValueAt(linha, 0));
+
+        //SE NÃO TIVER NENHUMA POSIÇÃO, EXIGE UMA
+        if (linha == -1) {
+            JOptionPane.showMessageDialog(rootPane, "Selecione um produto.");
+        } else {
+            id_produto_venda.setText(idProduto);
+        }
+        return Integer.parseInt(idProduto);
     }
 }

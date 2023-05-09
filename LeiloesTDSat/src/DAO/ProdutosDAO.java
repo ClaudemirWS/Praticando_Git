@@ -12,6 +12,19 @@ import java.util.List;
 //ATENÇÃO!! extende o conectaDAO
 public class ProdutosDAO extends conectaDAO {
 
+    public int venderProduto(Integer id) {
+        int status;
+        try {
+            st = conn.prepareStatement("UPDATE produtos SET status = 'Vendido' WHERE id = ?");
+            st.setInt(1, id);
+            status = st.executeUpdate();
+            return status; //retornar 1
+        } catch (SQLException ex) {
+            System.out.println(ex.getErrorCode());
+            return ex.getErrorCode();
+        }
+    }
+
     //vai inserir itens na tabela produtos, deve receber um objeto do tipo produto
     public int cadastrarProduto(ProdutosDTO produto) {
 
