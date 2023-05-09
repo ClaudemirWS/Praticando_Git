@@ -16,7 +16,7 @@ public class vendasVIEW extends javax.swing.JFrame {
      */
     public vendasVIEW() {
         initComponents();
-        listarProdutos();
+        listarVendidos();
     }
 
     /**
@@ -139,14 +139,14 @@ public class vendasVIEW extends javax.swing.JFrame {
     private javax.swing.JTable listaProdutos;
     // End of variables declaration//GEN-END:variables
 
-    private void listarProdutos() {
+    private void listarVendidos() {
         try {
             ProdutosDAO produtosdao = new ProdutosDAO();
 
             DefaultTableModel model = (DefaultTableModel) listaProdutos.getModel();
             model.setNumRows(0);
 
-            List<ProdutosDTO> listagem = produtosdao.listarProdutos();
+            List<ProdutosDTO> listagem = produtosdao.listarVendidos();
 
             for (int i = 0; i < listagem.size(); i++) {
                 model.addRow(new Object[]{

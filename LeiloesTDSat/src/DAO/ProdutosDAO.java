@@ -64,4 +64,26 @@ public class ProdutosDAO extends conectaDAO {
 
     }
 
+    //seleciona e retorna a lista de produtos vendidos
+    public List<ProdutosDTO> listarVendidos() {
+
+        try {
+            st = conn.prepareStatement("SELECT id, nome, valor, status FROM produtos WHERE status = 'Vendido'");
+            rs = st.executeQuery();
+            List<ProdutosDTO> lista = new ArrayList<>();
+            while (rs.next()) {
+                ProdutosDTO produto = new ProdutosDTO();
+                produto.setId(rs.getInt("id"));
+                produto.setNome(rs.getString("nome"));
+                produto.setValor(rs.getInt("valor"));
+                produto.setStatus(rs.getString("status"));
+                lista.add(produto);
+            }
+            return lista;
+        } catch (SQLException ex) {
+            return null;
+        }
+
+    }
+
 }
